@@ -89,9 +89,17 @@
     text-shadow:0 2px 24px rgba(0,0,0,.6); }
   .hero cite { display:block; margin-top:16px; font-family:var(--mono); font-style:normal;
     font-size:.72rem; letter-spacing:.07em; color:#9FB0C4; }
-  .hero cite span { display:block; margin-top:4px; font-size:.64rem; color:#73859A; letter-spacing:.04em; }
-  .hero-credit { position:absolute; right:12px; bottom:9px; z-index:1; font-family:var(--mono);
-    font-size:.56rem; letter-spacing:.05em; color:rgba(255,255,255,.4); }
+  .hero-foot { position:absolute; left:0; right:0; bottom:10px; z-index:1; display:flex;
+    justify-content:space-between; align-items:flex-end; gap:16px; padding:0 16px;
+    font-family:var(--mono); font-size:.55rem; letter-spacing:.05em; line-height:1.55;
+    color:rgba(255,255,255,.30); transition:color .3s ease; pointer-events:none; }
+  .hero:hover .hero-foot, .hero:focus-within .hero-foot { color:rgba(255,255,255,.58); }
+  .hero-foot .attrib { max-width:62%; text-align:left; }
+  .hero-foot .credit { text-align:right; white-space:nowrap; }
+  @media (max-width:760px){
+    .hero-foot { flex-direction:column; align-items:flex-start; gap:3px; font-size:.5rem; padding:0 14px; }
+    .hero-foot .attrib, .hero-foot .credit { max-width:100%; text-align:left; white-space:normal; }
+  }
 
   /* ---------- intro ---------- */
   .intro { padding:52px 0 8px; display:grid; grid-template-columns:104px minmax(0,1fr); gap:24px; align-items:start; }
@@ -264,9 +272,12 @@
   <img src="hero-cassini.jpg" alt="Saturn backlit by the Sun, photographed by the Cassini spacecraft" fetchpriority="high">
   <div class="hero-in">
     <blockquote>Somewhere out there, there&rsquo;s something wonderful waiting to be known.</blockquote>
-    <cite>Brian Cox<span>quoting a line long credited to Carl Sagan &mdash; written by Sharon Begley, Newsweek, 1977</span></cite>
+    <cite>Brian Cox</cite>
   </div>
-  <div class="hero-credit">Cassini &middot; NASA / JPL-Caltech / Space Science Institute</div>
+  <div class="hero-foot">
+    <span class="attrib">Quoting a line long credited to Carl Sagan &mdash; written by Sharon Begley, Newsweek, 1977</span>
+    <span class="credit">Cassini &middot; NASA / JPL-Caltech / Space Science Institute</span>
+  </div>
 </header>
 
 <main class="wrap">
@@ -275,7 +286,7 @@
     <img src="portrait.jpg" alt="Alexander Olaguez">
     <div>
       <h1>I&rsquo;m Alex.</h1>
-      <p>I study <strong>computer engineering</strong> at the University of Illinois, and I work at the boundary where software has to meet physical hardware &mdash; sensors, embedded systems, silicon, and the computing that sits on top of them.</p>
+      <p>I study <strong>computer engineering</strong> at the University of Illinois, and what I care about is the cross-section of software and hardware: sensors, embedded systems, silicon, and the computing that runs on top of them.</p>
       <p>I transferred to Grainger this fall from Wright College, where I co-founded the engineering school&rsquo;s first IEEE chapter.</p>
       <span class="seeking">Seeking Summer 2027 internship or co-op</span>
       <div class="actions">
@@ -304,25 +315,25 @@
 
     <div class="thread">
       <h3>Neural interfaces</h3>
-      <p>I want to work on brain&ndash;computer interfaces, and my reason is narrower than &ldquo;the technology is exciting.&rdquo; I want to help build the thing that gives people their lives back &mdash; people who went through something traumatic and came out of it permanently disabled, and who could have movement, or speech, or independence returned to them.</p>
-      <p>It&rsquo;s also exactly where my interests already sit. BCIs live at the <strong>hardware and software crossroads</strong>. A signal has to come off the brain through real electrodes, survive real noise, fit inside a real power budget, and arrive as something a person can actually use. Every one of those is a constraint I find genuinely interesting.</p>
-      <p>What I think about most is what comes <em>after</em> the current generation &mdash; once the technology has been iterated on a few times, what becomes possible that isn&rsquo;t yet? Eventually, a chip that lets technology become a literal extension of the person using it.</p>
-      <p class="aside">The honest version of that question includes the failure modes. A system that infers what you want and gets it wrong is dangerous in a way that a system waiting for a deliberate input is not. I&rsquo;d rather see a reliable mind-controlled cursor ship than an ambitious one that misreads intent.</p>
+      <p>I want to work on brain-computer interfaces, and my reason is more specific than the technology being exciting. I want to help build something for people who have lost a lot. People who went through something traumatic, came out of it <strong>permanently disabled</strong>, and could get movement, speech, or independence back. If not their whole life, at least part of it.</p>
+      <p>It&rsquo;s also right where my interests already are. A BCI is <strong>hardware and software at the same time</strong>. The signal has to come off the brain through real electrodes, get through the noise, fit inside a power budget, and end up as something a person can actually use. Each one of those constraints is interesting to me.</p>
+      <p>What I think about most is what comes <em>after</em> the current generation. Once this technology has been iterated on a few times, things will be possible that aren&rsquo;t yet. Eventually I think that means a chip that makes technology a literal extension of the person using it.</p>
+      <p class="aside">Thinking that far ahead also means thinking about how it fails. A system that guesses what you want and gets it wrong is dangerous in a way that a system waiting for a deliberate input isn&rsquo;t. I&rsquo;d rather see a reliable mind-controlled cursor ship than an ambitious one that misreads intent.</p>
     </div>
 
     <div class="thread">
       <h3>Space, from the engineering side</h3>
-      <p>I&rsquo;m not trying to be the person who studies space. I want to build what we send up &mdash; <strong>autonomous rovers, satellites, and the instruments they carry</strong>.</p>
-      <p>What pulls me in is the chain. Something physical happens, a sensor catches it, the signal gets conditioned and digitised, an embedded processor makes sense of it, and at the far end a scientist has a measurement they didn&rsquo;t have before. Every link in that is electronics and computing &mdash; and the whole thing has to work somewhere nobody can reach it, on a fixed power budget, with a communications delay and no technician standing by.</p>
-      <p class="aside">And somewhere past all of that &mdash; I&rsquo;d like to leave the atmosphere myself one day. Who knows.</p>
+      <p>I&rsquo;m less interested in studying space than in building what we send up there: <strong>autonomous rovers, satellites, and the instruments they carry</strong>.</p>
+      <p>The part that interests me is the chain. Something physical happens and a sensor picks it up. The signal gets conditioned and digitized, an embedded processor makes sense of it, and at the end a scientist has a measurement they didn&rsquo;t have before. Every link in that is electronics and computing. And all of it has to work somewhere nobody can reach, on a fixed power budget, with a communications delay and no technician around.</p>
+      <p class="aside">And somewhere past all of that, I&rsquo;d like to leave the atmosphere myself one day. Who knows.</p>
     </div>
 
     <div class="thread">
       <h3>Why those aren&rsquo;t two different interests</h3>
-      <p>A neural implant and a planetary rover are the same problem wearing different clothes.</p>
+      <p>A neural implant and a planetary rover are basically the same engineering problem.</p>
       <div class="chain">sensor &rarr; analog front end &rarr; signal processing &rarr; computation &rarr; decision &rarr; output</div>
-      <p>Both run that chain, and both run it under hard physical constraints: limited power, limited compute, noisy signals, tight timing, and no way to reach in and fix it once it&rsquo;s deployed. The domain knowledge differs. The engineering doesn&rsquo;t.</p>
-      <p>That&rsquo;s why my background looks scattered written down &mdash; a semiconductor cleanroom, a supercomputer, a prosthetic limb &mdash; and isn&rsquo;t. It&rsquo;s the same chain approached from different ends, which is also why I keep choosing <strong>computer engineering over pure software</strong>: I want to understand the hardware the software is standing on.</p>
+      <p>Both run that chain, and both run it under hard physical constraints: limited power, limited compute, noisy signals, tight timing, and no way to reach in and fix it once it&rsquo;s deployed. What you have to learn about the brain is different from what you have to learn about another planet, but the engineering underneath is the same.</p>
+      <p>So my background looks more scattered on paper than it is. A semiconductor cleanroom, a supercomputer, and a prosthetic limb are the same chain from different ends. It&rsquo;s also why I keep choosing <strong>computer engineering over pure software</strong>. I see writing code as part of my future, not all of it, and I want to understand the hardware it runs on.</p>
     </div>
   </section>
 
@@ -337,10 +348,10 @@
       <p class="entry-role">Intro to HPC Bootcamp <span class="where">Argonne National Laboratory &middot; St. Charles, IL</span></p>
       <ul class="bullets">
         <li>Profiled <strong>larnd-sim</strong> &mdash; the open-source simulator DUNE uses for its liquid-argon detectors &mdash; running on <strong>Perlmutter</strong> at NERSC. Ran the workflow in Jupyter, submitted jobs through Slurm, and used NVIDIA Nsight Systems and Nsight Compute to find where GPU time was going.</li>
-        <li>Our team found that <code>get_adc_values()</code> stops parallelising efficiently above <strong>four threads per block</strong>, and identified it and <code>tracks_current_mc</code> as the targets for further optimisation.</li>
+        <li>Our team found that <code>get_adc_values()</code> stops parallelizing efficiently above <strong>four threads per block</strong>, and identified it and <code>tracks_current_mc</code> as the targets for further optimization.</li>
         <li><strong>I presented the profiling section of our final talk</strong> &mdash; the Nsight Systems and Nsight Compute slides.</li>
       </ul>
-      <p class="aside">The scripts were written for us and the week was short &mdash; I want to be straight about that. But it was the first time I watched a real physics workload run on a real supercomputer and saw exactly where the time goes, and that&rsquo;s the part I haven&rsquo;t stopped thinking about.</p>
+      <p class="aside">The scripts were written for us and the week was short. I don&rsquo;t want to oversell it. But it was the first time I watched a real physics workload run on a real supercomputer and saw exactly where the time goes, and I haven&rsquo;t stopped thinking about that part.</p>
 
       <div class="acc bare" data-open="false">
         <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="dune-out" id="dune-out-t">
@@ -349,12 +360,12 @@
         </button>
         <div class="acc-panel" id="dune-out" role="region" aria-labelledby="dune-out-t">
           <div class="acc-inner"><div class="acc-body">
-            <p class="proj-lede">Plots below are re-plotted straight from my own <code>output.h5</code> run files, not screenshots. I built them and the animation from our simulation output using Claude; one of the project leads asked to share the visualisations with the wider DUNE collaboration, and afterwards asked for the prompts I&rsquo;d used.</p>
+            <p class="proj-lede">The plots below are re-plotted from my own <code>output.h5</code> run files. They aren&rsquo;t screenshots. I built them and the animation from our simulation output using Claude. One of the project leads asked to share the visualizations with the wider DUNE collaboration, and afterwards asked for the prompts I used.</p>
             <figure class="clip">
               <video controls preload="none" playsinline poster="dune-larnd-poster.jpg" width="1920" height="1080">
                 <source src="dune-larnd.mp4" type="video/mp4">
               </video>
-              <figcaption>LArND &mdash; neutrinos from the Fermilab beam interacting in liquid argon, ionisation drifting to the pixel anodes, with charge and light readout updating live. Built from real simulated events in our <code>day2_baseline</code> output. Credited to all six of us.</figcaption>
+              <figcaption>LArND &mdash; neutrinos from the Fermilab beam interacting in liquid argon, ionization drifting to the pixel anodes, with charge and light readout updating live. Built from real simulated events in our <code>day2_baseline</code> output. Credited to all six of us.</figcaption>
             </figure>
             <div class="shots">
               <figure>
@@ -383,8 +394,8 @@
       <p class="entry-role">Semiconductor Research Intern <span class="where">Chicago, IL</span></p>
       <ul class="bullets">
         <li>Four weeks of cleanroom process work: photoresist application, hard bakes, chemical processing, <strong>photolithography</strong>, etch and metrology, under contamination-control discipline.</li>
-        <li>Designed a <strong>MEMS thermal actuator</strong> &mdash; 85&times;85&nbsp;&micro;m anchors, a ~400&times;400&nbsp;&micro;m active region and 5&nbsp;&micro;m release holes, to a <strong>4&nbsp;&micro;m minimum feature</strong>. It was a design exercise; I didn&rsquo;t fabricate or test it.</li>
-        <li>This is the half of my background that points at implantable electronics. Making something small enough and reliable enough to sit inside a person starts here.</li>
+        <li>Designed a <strong>MEMS thermal actuator</strong> &mdash; 85&times;85&nbsp;&micro;m anchors, a ~400&times;400&nbsp;&micro;m active region and 5&nbsp;&micro;m release holes, to a <strong>4&nbsp;&micro;m minimum feature</strong>. It was a design exercise. I didn&rsquo;t fabricate or test it.</li>
+        <li>The fabrication side is the part of my background that points toward implantable electronics. Anything small and reliable enough to sit inside a person starts at this level.</li>
       </ul>
     </div>
   </section>
@@ -403,11 +414,11 @@
       </button>
       <div class="acc-panel" id="proj-sync" role="region" aria-labelledby="proj-sync-t">
         <div class="acc-inner"><div class="acc-body">
-          <p class="proj-lede">I got tired of keeping two calendars in step by hand, so I wrote something that does it <strong>in both directions</strong>. It currently tracks <strong>214 events across 3 calendar pairs</strong> and prints exactly what it changed on every run.</p>
+          <p class="proj-lede">I got tired of keeping two calendars in sync by hand, so I built something that syncs them <strong>in both directions</strong>. Right now it tracks <strong>214 events across 3 calendar pairs</strong> and prints exactly what it changed on every run.</p>
           <ul class="bullets">
             <li><strong>Change detection by hashing.</strong> Each event&rsquo;s fields are hashed against a saved state file, so a re-run only touches what actually moved instead of rewriting both calendars.</li>
             <li><strong>Conflict resolution.</strong> An event edited on both sides keeps the more recently modified version, and the collision gets reported in the summary rather than silently swallowed.</li>
-            <li><strong>A guard against mass deletion.</strong> If more than half a pair&rsquo;s tracked events vanish from a fetch, that pair is skipped &mdash; so an API hiccup can&rsquo;t cascade into wiping a calendar. This is the part I&rsquo;m most pleased with; it exists because I thought about how it would fail before it failed.</li>
+            <li><strong>A guard against mass deletion.</strong> If more than half of a pair&rsquo;s tracked events disappear from a fetch, that pair gets skipped, so an API hiccup can&rsquo;t turn into a wiped calendar. This is the part I&rsquo;m most happy with. It&rsquo;s there because I thought about how it would fail before it did.</li>
             <li><strong>Mirror model.</strong> Nothing is ever written into a main calendar; each one mirrors into a dedicated calendar on the other side, so a bad run can be deleted wholesale without touching real events.</li>
           </ul>
           <div class="proj-links">
@@ -431,11 +442,11 @@
       </button>
       <div class="acc-panel" id="proj-klp" role="region" aria-labelledby="proj-klp-t">
         <div class="acc-inner"><div class="acc-body">
-          <p class="proj-lede">A six-student concept for a below-knee prosthetic that <strong>harvests kinetic energy from the wearer&rsquo;s own gait</strong> to supplement its battery, with a swappable pack so the limb never goes offline to charge. Advised by Dr.&nbsp;Doris Espiritu.</p>
+          <p class="proj-lede">A six-student concept for a below-knee prosthetic that <strong>harvests kinetic energy from the wearer&rsquo;s steps</strong> to supplement its battery. The pack is swappable, so the limb never has to go offline to charge. Advised by Dr.&nbsp;Doris Espiritu.</p>
           <ul class="bullets">
-            <li>I was the <strong>CAD designer</strong>. I taught myself the software for this, designed the carbon-fibre-style foot after studying how existing energy-storing prosthetic feet are shaped, and built the full limb assembly around it. <strong>The socket came from an existing preset, not my own geometry.</strong></li>
+            <li>I was the <strong>CAD designer</strong>. I taught myself the software for this project, studied how existing energy-storing prosthetic feet are shaped, and designed the carbon-fiber-style foot from that. Then I built the full limb assembly around it. <strong>The socket came from an existing preset, so that geometry isn&rsquo;t mine.</strong></li>
             <li>Presented the design and its engineering rationale to judges from academia and industry. Our poster was used as the cover image for a City Colleges of Chicago article on the showcase.</li>
-            <li>It was a concept and a model &mdash; nothing was fabricated or tested. It&rsquo;s also the first time I worked on hardware meant to go on a person, which is a thread I&rsquo;ve kept pulling.</li>
+            <li>It was a concept and a model. Nothing was fabricated or tested. It was also the first time I worked on hardware meant to go on a person, and I&rsquo;ve kept coming back to that since.</li>
           </ul>
           <div class="shots">
             <figure><img src="klp-early.jpg" alt="Early blocked-out CAD assembly" loading="lazy" decoding="async"><figcaption>Early rendition &mdash; blocked-out assembly</figcaption></figure>
@@ -475,7 +486,7 @@
     </dl>
     <dl class="kv">
       <dt>Tools &amp; platforms</dt>
-      <dd><span class="chip">Nsight Systems</span><span class="chip">Nsight Compute</span><span class="chip">Slurm</span><span class="chip">Jupyter</span><span class="chip">Perlmutter (NERSC)</span><span class="chip">GPU computing</span><span class="chip">LTspice</span><span class="chip">CAD / 3D modelling</span></dd>
+      <dd><span class="chip">Nsight Systems</span><span class="chip">Nsight Compute</span><span class="chip">Slurm</span><span class="chip">Jupyter</span><span class="chip">Perlmutter (NERSC)</span><span class="chip">GPU computing</span><span class="chip">LTspice</span><span class="chip">CAD / 3D modeling</span></dd>
     </dl>
     <dl class="kv">
       <dt>Coursework</dt>
