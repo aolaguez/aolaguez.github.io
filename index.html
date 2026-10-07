@@ -10,6 +10,10 @@
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Alexander Olaguez — Computer Engineering">
 <meta property="og:description" content="Neural interfaces, autonomous space systems, and the hardware/software boundary. Seeking a Summer 2027 internship or co-op.">
+<meta property="og:url" content="https://aolaguez.github.io/">
+<meta property="og:image" content="https://aolaguez.github.io/hero-cassini.jpg">
+<meta property="og:image:alt" content="Saturn backlit by the Sun, photographed by the Cassini spacecraft.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%2313294B'/%3E%3Ctext x='50' y='50' font-family='Helvetica,Arial,sans-serif' font-size='52' font-weight='bold' fill='%23FF5F05' text-anchor='middle' dominant-baseline='central'%3EAO%3C/text%3E%3C/svg%3E">
 <style>
   html { color-scheme: dark; scroll-behavior: smooth; }
@@ -246,6 +250,10 @@
   .shots .wide { grid-column:1 / -1; }
   .shots .wide img { height:290px; }
   @media (max-width:620px){ .shots{ grid-template-columns:1fr; } .shots img,.shots .wide img{ height:190px; } }
+  .shots.photo img { object-fit:cover; height:220px; }
+  .shots.photo .wide img { height:330px; }
+  .shots.photo .contain img { object-fit:contain; }
+  @media (max-width:620px){ .shots.photo img{ height:200px; } .shots.photo .wide img{ height:230px; } }
   figure.clip { margin:18px 0 0; }
   figure.clip video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
                       border:1px solid var(--rule-soft); border-radius:3px; background:#05080C; }
@@ -378,6 +386,17 @@
         <li>Our team found that <code>get_adc_values()</code> stops parallelizing efficiently above <strong>four threads per block</strong>, and identified it and <code>tracks_current_mc</code> as the targets for further optimization.</li>
         <li><strong>I presented the profiling section of our final talk</strong> &mdash; the Nsight Systems and Nsight Compute slides.</li>
       </ul>
+      <div class="shots photo">
+        <figure>
+          <img src="alcf-present.jpg" alt="Alexander Olaguez speaking into a microphone at the bootcamp closeout, a Nsight Compute results slide projected behind him" loading="lazy" decoding="async">
+          <figcaption>Presenting the profiling section at the closeout &mdash; Nsight Compute results behind me</figcaption>
+        </figure>
+        <figure>
+          <img src="alcf-cohort.jpg" alt="The bootcamp cohort standing in front of rows of HPE Cray cabinets in the Argonne machine room" loading="lazy" decoding="async">
+          <figcaption>Our cohort in the machine room at Argonne</figcaption>
+        </figure>
+      </div>
+
       <p class="aside">The scripts were written for us and the week was short. I don&rsquo;t want to oversell it. But it was the first time I watched a real physics workload run on a real supercomputer and saw exactly where the time goes, and I haven&rsquo;t stopped thinking about that part.</p>
 
       <div class="acc bare" data-open="false">
@@ -424,6 +443,36 @@
         <li>Designed a <strong>MEMS thermal actuator</strong> &mdash; 85&times;85&nbsp;&micro;m anchors, a ~400&times;400&nbsp;&micro;m active region and 5&nbsp;&micro;m release holes, to a <strong>4&nbsp;&micro;m minimum feature</strong>. It was a design exercise. I didn&rsquo;t fabricate or test it.</li>
         <li>The fabrication side is the part of my background that points toward implantable electronics. Anything small and reliable enough to sit inside a person starts at this level.</li>
       </ul>
+
+      <div class="acc bare" data-open="false">
+        <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="iswn-out" id="iswn-out-t">
+          <span class="acc-head"><span class="proj-title">From the cleanroom</span></span>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="acc-panel" id="iswn-out" role="region" aria-labelledby="iswn-out-t">
+          <div class="acc-inner"><div class="acc-body">
+            <p class="proj-lede">The wafer below is the program&rsquo;s process run, not a design of mine. What I did on it was the hands-on side: resist, lithography, bakes, etch, metrology.</p>
+            <div class="shots photo">
+              <figure>
+                <img src="iswn-wafer.jpg" alt="A finished four-inch silicon wafer, blue and gold, patterned with rows of dies" loading="lazy" decoding="async">
+                <figcaption>The finished wafer</figcaption>
+              </figure>
+              <figure>
+                <img src="iswn-die.jpg" alt="Close view across the wafer surface showing the die field and bond pads" loading="lazy" decoding="async">
+                <figcaption>Closer in &mdash; the die field and bond pads</figcaption>
+              </figure>
+              <figure class="wide contain">
+                <img src="iswn-micrograph.jpg" alt="Microscope image of a PMOSFET test array, each device labeled with a different channel geometry" loading="lazy" decoding="async">
+                <figcaption>Under the microscope &mdash; the PMOSFET test array, each device a different channel geometry so the process can be measured across sizes</figcaption>
+              </figure>
+              <figure class="wide">
+                <img src="iswn-cleanroom.jpg" alt="The intern cohort gowned in cleanroom suits under yellow lithography lighting" loading="lazy" decoding="async">
+                <figcaption>The cohort gowned up at UIC. The yellow light is there so the photoresist doesn&rsquo;t expose before you want it to.</figcaption>
+              </figure>
+            </div>
+          </div></div>
+        </div>
+      </div>
     </div>
   </section>
 
