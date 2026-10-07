@@ -27,7 +27,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
 <style>
   :root {
     --bg: #0B1016; --surface: #131A23; --ink: #E6EBF2; --muted: #9AA6B5; --faint: #7A8697;
@@ -115,7 +115,7 @@
   .hero::after { content:""; position:absolute; inset:0;
     background:radial-gradient(ellipse at center, rgba(5,8,12,.15) 0%, rgba(5,8,12,.78) 78%); }
   .hero-in { position:relative; z-index:1; text-align:center; padding:60px 26px; max-width:720px; }
-  .hero blockquote { margin:0; font-family:var(--display); font-weight:600; color:#F2F6FB;
+  .hero blockquote { margin:0; font-family:var(--display); font-weight:600; font-style:italic; color:#F2F6FB;
     font-size:clamp(1.35rem,4.1vw,2.3rem); line-height:1.25; letter-spacing:-.02em; text-wrap:balance;
     text-shadow:0 2px 24px rgba(0,0,0,.6); }
   .hero cite { display:block; margin-top:16px; font-family:var(--mono); font-style:normal;
@@ -323,11 +323,11 @@
 <header class="hero" id="top">
   <img src="hero-cassini.jpg" alt="Saturn backlit by the Sun, photographed by the Cassini spacecraft" fetchpriority="high">
   <div class="hero-in">
-    <blockquote>Somewhere out there, there&rsquo;s something wonderful waiting to be known.</blockquote>
-    <cite>Brian Cox</cite>
+    <blockquote>&ldquo;Somewhere out there, there&rsquo;s something wonderful waiting to be known.&rdquo;</blockquote>
+    <cite>&mdash; Brian Cox</cite>
   </div>
   <div class="hero-foot">
-    <span class="attrib">Quoting a line long credited to Carl Sagan &mdash; written by Sharon Begley, Newsweek, 1977</span>
+    <span class="attrib">A line long credited to Carl Sagan</span>
     <span class="credit">Cassini &middot; NASA / JPL-Caltech / Space Science Institute</span>
   </div>
 </header>
