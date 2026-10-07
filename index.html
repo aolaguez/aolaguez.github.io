@@ -253,6 +253,8 @@
   .shots.photo img { object-fit:cover; height:220px; }
   .shots.photo .wide img { height:330px; }
   .shots.photo .contain img { object-fit:contain; }
+  .shots.photo .term img { height:300px; background:#0A0A0C; padding:10px 0; }
+  @media (max-width:620px){ .shots.photo .term img{ height:220px; } }
   @media (max-width:620px){ .shots.photo img{ height:200px; } .shots.photo .wide img{ height:230px; } }
   figure.clip { margin:18px 0 0; }
   figure.clip video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
@@ -490,13 +492,19 @@
       </button>
       <div class="acc-panel" id="proj-sync" role="region" aria-labelledby="proj-sync-t">
         <div class="acc-inner"><div class="acc-body">
-          <p class="proj-lede">I got tired of keeping two calendars in sync by hand, so I built something that syncs them <strong>in both directions</strong>. Right now it tracks <strong>214 events across 3 calendar pairs</strong> and prints exactly what it changed on every run.</p>
+          <p class="proj-lede">I got tired of keeping two calendars in sync by hand, so I built something that syncs them <strong>in both directions</strong>. It keeps <strong>three calendar pairs</strong> in step and prints exactly what it changed on every run.</p>
           <ul class="bullets">
             <li><strong>Change detection by hashing.</strong> Each event&rsquo;s fields are hashed against a saved state file, so a re-run only touches what actually moved instead of rewriting both calendars.</li>
             <li><strong>Conflict resolution.</strong> An event edited on both sides keeps the more recently modified version, and the collision gets reported in the summary rather than silently swallowed.</li>
             <li><strong>A guard against mass deletion.</strong> If more than half of a pair&rsquo;s tracked events disappear from a fetch, that pair gets skipped, so an API hiccup can&rsquo;t turn into a wiped calendar. This is the part I&rsquo;m most happy with. It&rsquo;s there because I thought about how it would fail before it did.</li>
             <li><strong>Mirror model.</strong> Nothing is ever written into a main calendar; each one mirrors into a dedicated calendar on the other side, so a bad run can be deleted wholesale without touching real events.</li>
           </ul>
+          <div class="shots photo">
+            <figure class="wide contain term">
+              <img src="sync-run.jpg" alt="Terminal output from a sync run: three calendar pairs checked, 1 event created, 159 updated on Outlook, 20 updated on Google, nothing deleted, status success" loading="lazy" decoding="async">
+              <figcaption>A real run &mdash; three pairs checked, 159 events pushed to Outlook, 20 back to Google, nothing deleted, no conflicts</figcaption>
+            </figure>
+          </div>
           <div class="proj-links">
             <a class="proj-link" href="https://github.com/aolaguez/calendar-sync" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
