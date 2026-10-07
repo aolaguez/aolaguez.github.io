@@ -98,6 +98,10 @@
   .theme-toggle:hover,.theme-toggle:focus-visible { opacity:1; color:var(--ink); border-color:var(--ink); }
   .theme-toggle:active { transform:scale(.94); }
   .theme-toggle svg { width:15px; height:15px; }
+  @media (max-width:430px){ .nav-in{ gap:10px; padding:10px 13px; }
+                            .nav-name{ font-size:.78rem; }
+                            .nav a.nav-link{ font-size:.58rem; letter-spacing:.05em; } }
+  @media (max-width:350px){ .nav a.nav-link[href="#focus"]{ display:none; } }
   .theme-toggle .icon-sun { display:none; }
   :root[data-ui="light"] .theme-toggle .icon-sun { display:block; }
   :root[data-ui="light"] .theme-toggle .icon-moon { display:none; }
@@ -210,9 +214,12 @@
   /* ---------- accordion ---------- */
   .acc { border-top:1px solid var(--rule-soft); }
   .acc.bare { border-top:0; margin-top:14px; }
-  .acc-trigger { width:100%; text-align:left; background:none; border:0; cursor:pointer; color:inherit; font:inherit;
-                 padding:19px 34px 19px 0; position:relative; display:block; }
-  .acc.bare .acc-trigger { padding:10px 34px 10px 0; }
+  .acc-trigger { box-sizing:border-box; width:calc(100% + 24px); margin-left:-12px; text-align:left;
+                 background:transparent; border:0; cursor:pointer; color:inherit; font:inherit;
+                 padding:19px 52px 19px 12px; position:relative; display:block; border-radius:9px;
+                 transition:background-color .22s ease; }
+  .acc.bare .acc-trigger { padding:10px 52px 10px 12px; }
+  .acc-trigger:hover, .acc-trigger:focus-visible { background:var(--surface); }
   .acc-trigger:hover .proj-title { color:var(--accent); }
   .proj-title { font-family:var(--display); font-weight:700; font-size:1.04rem; letter-spacing:-.01em; transition:color .2s; }
   .acc.bare .proj-title { font-family:var(--mono); font-size:.72rem; letter-spacing:.11em; text-transform:uppercase;
@@ -220,10 +227,18 @@
   .acc-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
   .acc-sub { color:var(--steel); font-weight:600; font-size:.9rem; margin:3px 0 0;
              display:flex; gap:10px; flex-wrap:wrap; align-items:baseline; }
-  .acc-chev { position:absolute; right:2px; top:21px; width:16px; height:16px; color:var(--faint);
-              transition:transform .34s cubic-bezier(.33,0,.2,1), color .2s; }
-  .acc.bare .acc-chev { top:12px; }
-  .acc[data-open="true"] .acc-chev { transform:rotate(180deg); color:var(--accent); }
+  .acc-chev { position:absolute; right:12px; top:16px; width:27px; height:27px; padding:5px;
+              box-sizing:border-box; border:1px solid var(--rule); border-radius:999px;
+              color:var(--muted); background:transparent;
+              transition:transform .34s cubic-bezier(.33,0,.2,1), color .2s, border-color .2s, background-color .2s; }
+  .acc.bare .acc-chev { top:7px; }
+  .acc-trigger:hover .acc-chev, .acc-trigger:focus-visible .acc-chev {
+              color:var(--accent); border-color:var(--accent); background:var(--accent-soft); }
+  .acc[data-open="true"] .acc-chev { transform:rotate(180deg); color:var(--accent); border-color:var(--accent); }
+  @keyframes chevNudge { 0%,100%{ transform:translateY(0); } 25%{ transform:translateY(3px); }
+                         50%{ transform:translateY(0); } 72%{ transform:translateY(3px); } }
+  .acc[data-open="false"].hint .acc-chev { animation:chevNudge 1.5s cubic-bezier(.33,0,.2,1) 1;
+              color:var(--accent); border-color:var(--accent); }
   .acc-panel { display:grid; grid-template-rows:1fr; transition:grid-template-rows .36s cubic-bezier(.33,0,.2,1); }
   .acc[data-open="false"] .acc-panel { grid-template-rows:0fr; }
   .acc-inner { overflow:hidden; min-height:0; }
@@ -625,6 +640,29 @@
     }, { rootMargin: "-72px 0px -55% 0px", threshold: [0, .15, .4, .75, 1] });
     targets.forEach(function(t){ io.observe(t); });
   }
+
+  (function(){
+    var shut = [].slice.call(document.querySelectorAll('.acc[data-open="false"]'));
+    if (!shut.length || !("IntersectionObserver" in window)) return;
+    var spent = false;
+    var io = new IntersectionObserver(function(entries){
+      if (spent) return;
+      for (var i = 0; i < entries.length; i++) {
+        var e = entries[i];
+        if (!e.isIntersecting) continue;
+        spent = true; io.disconnect();
+        var el = e.target;
+        setTimeout(function(){
+          if (el.getAttribute("data-open") === "false") {
+            el.classList.add("hint");
+            setTimeout(function(){ el.classList.remove("hint"); }, 1700);
+          }
+        }, 450);
+        break;
+      }
+    }, { threshold: .9 });
+    shut.forEach(function(a){ io.observe(a); });
+  })();
 
   document.querySelectorAll(".acc").forEach(function(acc){
     var t = acc.querySelector(".acc-trigger"); if (!t) return;
